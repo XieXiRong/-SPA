@@ -4,7 +4,8 @@ import Vue from 'vue'
 import { Swipe, SwipeItem } from 'mint-ui';
 import App from './App'
 import router from './router'
-
+import './mock/mock'
+import store from './store'
 Vue.component('mt-swipe', Swipe);
 Vue.component('mt-swipe-item', SwipeItem);
 
@@ -15,5 +16,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })

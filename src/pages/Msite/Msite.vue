@@ -1,28 +1,7 @@
 <template>
+  <div class="msit_content">
   <div class="navlist">
-    <div class="nav">
-      <div class="navcontainer">
-        <div><span>推荐</span></div>
-        <div><span>居家</span></div>
-        <div><span>鞋包服饰</span></div>
-        <div><span>服装</span></div>
-        <div><span>电器</span></div>
-        <div><span>洗护</span></div>
-        <div><span>饮食</span></div>
-        <div><span>餐厨</span></div>
-        <div><span>婴童</span></div>
-        <div><span>文体</span></div>
-        <div><span>特色区</span></div>
-      </div>
-    </div>
-    <div class="msiteSwipe">
-      <mt-swipe :auto="4000">
-        <mt-swipe-item><img src="../../../static/images/wallhaven-661501.jpg" alt=""></mt-swipe-item>
-        <mt-swipe-item><img src="../../../static/images/wallhaven-669703.jpg" alt=""></mt-swipe-item>
-        <mt-swipe-item><img src="../../../static/images/wallhaven-663354.jpg" alt=""></mt-swipe-item>
-        <mt-swipe-item><img src="../../../static/images/wallhaven-679587.png" alt=""></mt-swipe-item>
-      </mt-swipe>
-    </div>
+    <Swipe/>
     <div class="msiteTips">
       <div>
         <svg class="icon" aria-hidden="true">
@@ -43,84 +22,192 @@
         <span class="msiteTipsText">48小时快速退款</span>
       </div>
     </div>
-    <div class="provides">
-      <div>
+    <div class="products">
+      <div  class="product">
         <p>品牌制造商直供</p>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-arrfill_l"></use>
+        </svg>
       </div>
     </div>
-  </div>
+    <div class="products_product">
+      <div class="products_item">
+        <div class="product_single">
+          <div class="product_single_detail">
+            <p>CK制造商</p>
+            <p>25元起</p>
+            <span>上新</span>
+          </div>
+          <div class="product_single_img">
+            <img src="http://yanxuan.nosdn.127.net/e57c3fb16c4633c292d8c0e7cb053a6f.png?imageView&thumbnail=355x0&quality=65" alt="">
+          </div>
+        </div>
+      </div>
 
+    </div>
+    <div class="new_products">
+      <div class="new_products">
+        <p class="new_products_first">新品首发</p>
+        <div class="new_products_all">
+          <p>查看全部</p>
+          <span>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-arrfill_l"></use>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <NewProduct/>
+  </div>
+  </div>
 </template>
 
 <script>
   import BScroll from 'better-scroll'
+  import Swipe from '../../components/Swipe/Swipe'
+  import NewProduct from '../../components/newProduct/newProduct'
+  import {mapState} from 'vuex'
   export default {
-    methods:{
-      _initNavScroll(){
-        new BScroll('.nav',{
-          click:true,
-          scrollX:true
-        })
-      },
+    components:{
+      Swipe,
+      NewProduct
     },
     computed:{
 
     },
-    mounted(){
-      this._initNavScroll()
-    }
+
+
   }
 </script>
 
 <style lang="less">
-  .navlist{
+  .msit_content{
+    width: 100%;
+    margin-bottom: 3rem;
+    background-color: #fff;
+  }
+  .navlist {
     overflow: hidden;
   }
-.nav{
-  background-color: white;
-  clear: both;
-  width: 100%;
-  height: 0.8rem;
-  margin-top: 0.1rem;
 
-}
-.navcontainer{
-  width: 20rem;
-}
-  .navcontainer div{
-    display: inline-block;
-    padding: 0 .21333rem;
-    line-height: .8rem;
-    font-size: .37rem;
-    color: #333;
-    text-align: center;
+  .products {
+    background-color: white;
+    height: 1.06667rem;
+    font-size: .42667rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.15rem;
   }
-.msiteTips{
-  background-color: white;
-  width: 100%;
-  height: .96rem;
-  padding: 0 .2rem;
-  display: flex;
-  align-items: center;
-}
-  .msiteTips div{
-  margin-left: 0.2rem;
+
+  .product {
+    width: 50%;
+    margin: 0 auto;
   }
-  .msiteTips .icon{
-    color: red;
-    font-size: 0.25rem;
+
+  .products p {
     display: inline-block;
+  }
+
+  .products .icon {
     vertical-align: middle;
+    display: inline-block;
   }
-.msiteSwipe{
-  width: 100%;
-  height: 3.8rem;
-}
-  .msiteSwipe img{
+
+  .products_product {
     width: 100%;
-    height: 100%;
+    position: relative;
+    height: 6.24rem;
+    overflow: hidden;
+    font-size: 0;
   }
-  .provides{
+
+  .products_product .products_item {
+    width: 50%;
+    display: inline-block;
+    height: 3.12rem;
     background-color: white;
   }
+  .products_product .products_item .product_single{
+    overflow: hidden;
+    width: 97%;
+    height: 3.02rem;
+    margin: 0.05rem auto;
+    background-color: #F4F4F4;
+    position: relative;
+  }
+  .product_single .product_single_detail{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: .26667rem 0 0 .26667rem;
+    width: 100%;
+    z-index: 4;
+    font-size: .27333rem;
+  }
+  .product_single .product_single_detail p{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #333;
+    line-height: .35333rem;
+    margin-bottom: .08rem;
+  }
+  .product_single .product_single_detail span{
+    color: gold;
+    border: 1px solid goldenrod;
+    border-radius: 0.1rem;
+    line-height: 0.6rem;
+    padding: 0.01rem 0.09rem;
+    text-align: center;
+  }
+  .product_single .product_single_img{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0 .2rem .2rem 0;
+    height: 100%;
+  }
+  .product_single .product_single_img img{
+    width: 100%;
+    max-height: 2.8rem;
+    padding-top: 0.3rem;
+  }
+  .new_products{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    background: url("//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/bitmap-d4f7b37e32.png") no-repeat 50% 100%;
+  }
+  .new_products_first{
+    line-height: 1.3rem;
+    text-align: center;
+    font-size: .48rem;
+    color: #8BA0B6;
+    margin-top: 0.5rem;
+  }
+  .new_products_all{
+    position: relative;
+    width: 3rem;
+    height: .74667rem;
+    font-size: .37333rem;
+    line-height: .74667rem;
+    background: #D8E5F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .new_products_all p{
+    text-align: center;
+    color: #8BA0B6;
+
+
+  }
+  .new_products_all .icon{
+    vertical-align: middle;
+  }
+
+
 </style>

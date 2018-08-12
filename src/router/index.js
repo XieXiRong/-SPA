@@ -5,6 +5,9 @@ import Categorys from '../pages/Categorys/Categorys'
 import Shiwu from '../pages/Shiwu/Shiwu'
 import Shopcart from '../pages/Shopcart/Shopcart'
 import Personal from '../pages/Personal/Personal'
+const Item = () => import('../pages/Item/Item')
+import Jujia from '../pages/Item/Jujia/Jujia'
+import SheetBag from '../pages/Item/SheetBag/SheetBag'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -12,41 +15,40 @@ export default new VueRouter({
     {
       path: '/personal',
       component: Personal,
-      meta:{
-        showFoot:false
-      }
     },
     {
       path: '/msite',
       component: Msite,
-      meta:{
-        showFoot:true
-      }
     },
     {
       path: '/categorys',
       component: Categorys,
-      meta:{
-        showFoot:false
-      }
     },
     {
       path: '/shopcart',
       component: Shopcart,
-      meta:{
-        showFoot:false
-      }
     },
     {
       path: '/shiwu',
       component: Shiwu,
-      meta:{
-        showFoot:false
-      }
     },
     {
       path:'/',
       redirect:'/msite',
-    }
+    },
+    {
+      path: '/item',
+      component: Item,
+      children:[
+        {
+          path: '/jujia',
+          component: Jujia,
+        },
+        {
+          path: '/sheetbag',
+          component: SheetBag,
+        }
+      ]
+    },
   ]
 })
