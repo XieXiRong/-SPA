@@ -39,6 +39,7 @@
   }
 
   .msiteSwipe {
+    margin-top: 1.8rem;
     width: 100%;
     height: 3.8rem;
   }

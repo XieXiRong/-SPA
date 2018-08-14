@@ -1,25 +1,31 @@
 <template>
   <div>
-    <div class="new_products_msite">
-      <div class="new_products_list_wrap">
-        <div class="new_products_list">
-          <div class="new_products_one_wrap" v-for="(newcate,index) in cateList.newItemList" :key="index">
-            <div class="new_products_list_one">
-              <div class="new_products_list_img">
-                <img :src="newcate.listPicUrl" alt="">
-              </div>
-              <div class="new_products_detail">
-                <span class="new_products_show">七夕推荐</span>
-                <p class="new_products_titleone">{{newcate.name}}</p>
-                <p class="new_products_introduce">{{newcate.simpleDesc}}</p>
-                <p class="new_products_price">¥{{newcate.retailPrice}}</p>
+    <div>
+      <div class="new_scroll_msite" >
+        <div class="new_products_msite" ref="mscroll">
+          <div class="new_products_list_wrap">
+            <div class="new_products_list">
+              <div v-for="(newcate,index) in newcates" :key="index" class="new_products_one_wrap">
+                <div class="new_products_list_one">
+                  <div class="new_products_list_img">
+                    <img :src="newcate.listPicUrl" alt="">
+                  </div>
+                  <div class="new_products_detail">
+                    <span class="new_products_show">七夕推荐</span>
+                    <p class="new_products_titleone">{{newcate.name}}</p>
+                    <p class="new_products_introduce">{{newcate.simpleDesc}}</p>
+                    <p class="new_products_price">¥{{newcate.retailPrice}}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
 
 
 </template>
@@ -28,30 +34,49 @@
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   export default {
-    computed: {
-      ...mapState(['cateList'])
+    props:{
+      newcates:Array,
+      scrollclass1:String,
+      scrollclass2:String,
     },
     methods: {
       _initNewProductScroll() {
-        new BScroll('.new_products_msite', {
+        if(this.scrollclass1){
+          this.$refs.mscroll.className = this.scrollclass1
+        }
+        const selecty = '.' + this.$refs.mscroll.className
+
+        new BScroll(selecty, {
           click: true,
           scrollX: true,
-          scrollY: false
+          scrollY: false,
+          eventPassthrough:'vertical'
         })
+        if(this.scrollclass2){
+          this.$refs.mscroll.className = this.scrollclass2
+        }
       },
     },
     mounted() {
       this._initNewProductScroll()
+    },
+    watch:{
+
     }
+
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+
+.new_scroll_msite{
+  width: 100%;
+}
   .new_products_msite{
     width: 100%;
   }
   .new_products_list_wrap{
-    width: 20rem;
+    width: 35rem;
     height: 4.6rem;
   }
   .new_products_list{
@@ -62,6 +87,7 @@
     margin-top: 0.2rem;
   }
   .new_products_list_one{
+
     margin-left: .4rem;
     width: 3.4rem;
     height: 4.6rem;
@@ -71,12 +97,14 @@
   }
   .new_products_list_one .new_products_list_img{
     background-color: #f4f4f4;
+    border-radius: 0.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .new_products_list_one .new_products_list_img img{
     width:100%;
+
   }
   .new_products_detail{
     text-align: left;

@@ -31,15 +31,15 @@
       </div>
     </div>
     <div class="products_product">
-      <div class="products_item">
+      <div v-for="(catepro,index) in cateList.tagList" :key="index" class="products_item">
         <div class="product_single">
           <div class="product_single_detail">
-            <p>CK制造商</p>
-            <p>25元起</p>
-            <span>上新</span>
+            <p>{{catepro.name}}</p>
+            <p>{{catepro.floorPrice}}元起</p>
+            <span v-show="catepro.newOnShelf">上新</span>
           </div>
           <div class="product_single_img">
-            <img src="http://yanxuan.nosdn.127.net/e57c3fb16c4633c292d8c0e7cb053a6f.png?imageView&thumbnail=355x0&quality=65" alt="">
+            <img :src="catepro.appListPicUrl" alt="">
           </div>
         </div>
       </div>
@@ -58,7 +58,22 @@
         </div>
       </div>
     </div>
-    <NewProduct/>
+    <NewProduct :scrollclass1="'new_scroll_product'" :newcates="cateList.newItemList"/>
+    <div class="new_products">
+      <div class="new_products">
+        <p class="new_products_first">人气推荐 · 好物精选</p>
+        <div class="new_products_all">
+          <p>查看全部</p>
+          <span>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-arrfill_l"></use>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <NewProduct :scrollclass2="'new_scroll_msite'" :newcates="cateList.popularItemList"/>
+    <SettimeSell/>
   </div>
   </div>
 </template>
@@ -67,21 +82,29 @@
   import BScroll from 'better-scroll'
   import Swipe from '../../components/Swipe/Swipe'
   import NewProduct from '../../components/newProduct/newProduct'
+  import SettimeSell from './SettimeSell/SettimeSell'
   import {mapState} from 'vuex'
   export default {
     components:{
       Swipe,
-      NewProduct
+      NewProduct,
+      SettimeSell
     },
     computed:{
+      ...mapState(['cateList'])
+    },
+    methods:{
 
     },
+    mounted(){
+
+    }
 
 
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .msit_content{
     width: 100%;
     margin-bottom: 3rem;
@@ -164,7 +187,7 @@
   .product_single .product_single_img{
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: -47px;
     padding: 0 .2rem .2rem 0;
     height: 100%;
   }
@@ -172,6 +195,7 @@
     width: 100%;
     max-height: 2.8rem;
     padding-top: 0.3rem;
+
   }
   .new_products{
     display: flex;
@@ -208,6 +232,7 @@
   .new_products_all .icon{
     vertical-align: middle;
   }
-
-
+  new_products2{
+  background: url("//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/bitmap2-d626e0b52a.png") no-repeat 50% 100%;
+}
 </style>

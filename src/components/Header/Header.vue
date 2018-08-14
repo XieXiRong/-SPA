@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="headerWrap">
     <div class="headerTop">
       <div class="headertitle">
       </div>
@@ -47,7 +47,14 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+  .headerWrap{
+    z-index: 20;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 .headerTop{
   background-color: white;
   width: 100%;
@@ -102,7 +109,6 @@
   clear: both;
   width: 100%;
   height: 0.8rem;
-  margin-top: 0.1rem;
 }
 
 .navcontainer {

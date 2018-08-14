@@ -1,18 +1,18 @@
 <template>
   <div class="foot_container">
-    <div class="foot_box" :class="{activeGuide:$route.path==='/msite'}" @click="$router.replace('/msite')">
+    <div class="foot_box" :class="{activeGuide:$route.path==='/msite'}" @click="$router.push('/msite')">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-shouye"></use>
       </svg>
       <p>首页</p>
     </div>
-    <div class="foot_box" :class="{activeGuide:$route.path==='/shiwu'}" @click="$router.replace('/shiwu')">
+    <div class="foot_box" :class="{activeGuide:$route.path==='/shiwu'}" @click="$router.push('/shiwu')">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-shouye1"></use>
       </svg>
       <p>识物</p>
     </div>
-    <div class="foot_box"  :class="{activeGuide:$route.path==='/categorys'}" @click="$router.replace('/categorys')">
+    <div class="foot_box"  :class="{activeGuide:$route.path==='/categorys'}" @click="$router.push('/categorys')">
       <svg class="icon"  aria-hidden="true">
         <use xlink:href="#icon-foot1-copy"></use>
       </svg>
@@ -37,25 +37,36 @@
   export default {
     mounted(){
       console.log(this.$route);
+    },
+    methods: {
+      test(){
+        console.log('ceshi...');
+        $router.push('/shiwu')
+      }
     }
   }
 </script>
 
 <style>
   .foot_container{
+    z-index: 999;
     width:100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     height:1.11rem;
-
   }
   .foot_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width:20%;
     height:1.11rem;
     float:left;
     background-color: #fafafa;
   }
   .icon{
-    display: flex;
-    margin: 4px auto;
     font-size: 0.60rem;
   }
   .foot_box p{

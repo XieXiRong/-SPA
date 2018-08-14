@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header v-if="$route.path==='/msite'"/>
+    <ShiwuHeader v-if="$route.path==='/shiwu'||$route.path==='/personal'"/>
     <router-view/>
-    <div class="foot_guide_list">
-      <FootGuide/>
-    </div>
+    <FootGuide/>
   </div>
 </template>
 
 <script>
   import Header from './components/Header/Header'
+  import ShiwuHeader from './components/ShiwuHeader/ShiwuHeader'
   import FootGuide from './components/FootGuide/FootGuide'
-  import {} from 'vuex'
 export default {
   components:{
     FootGuide,
-    Header
+    Header,
+    ShiwuHeader
   },
   mounted(){
     this.$store.dispatch('getMsiteDates')
@@ -24,15 +24,11 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
- body
-   cursor pointer
-   margin-bottom 5rem
-   background-color: #f4f4f4
-   height 100%
-  .foot_guide_list
+  @import "../static/css/mixins.styl"
+  #app
     width 100%
-    height 1.2rem
-    position fixed
-    border-top 1px solid #999;
-    bottom 0
+    height 100%
+    background-color: #eee
+
+
 </style>
