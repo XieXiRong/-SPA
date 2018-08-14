@@ -11,10 +11,10 @@
       </div>
       <div class="shiwu_header_fuc">
         <svg class="icon" aria-hidden="true"  @click="$router.push('/msite')">
-          <use xlink:href="#icon-xingtaiduICON_sousuo---copy"></use>
+          <use xlink:href="#icon-sousuo"></use>
         </svg>
         <svg class="icon" aria-hidden="true"  @click="$router.push('/msite')">
-          <use xlink:href="#icon-qicheqianlian-"></use>
+          <use xlink:href="#icon-cart-copy"></use>
         </svg>
       </div>
     </div>

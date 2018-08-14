@@ -14,13 +14,13 @@
     </div>
     <div class="foot_box"  :class="{activeGuide:$route.path==='/categorys'}" @click="$router.push('/categorys')">
       <svg class="icon"  aria-hidden="true">
-        <use xlink:href="#icon-foot1-copy"></use>
+        <use xlink:href="#icon-leimupinleifenleileibie"></use>
       </svg>
       <p :class="{activeGuide:$route.path==='/categorys'}">分类</p>
     </div>
     <div class="foot_box" :class="{activeGuide:$route.path==='/shopcart'}" @click="$router.replace('/shopcart')">
       <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-qicheqianlian-"></use>
+        <use xlink:href="#icon-cart-copy"></use>
       </svg>
       <p>购物车</p>
     </div>

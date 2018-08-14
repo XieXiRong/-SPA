@@ -26,7 +26,7 @@
       <div  class="product">
         <p>品牌制造商直供</p>
         <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-arrfill_l"></use>
+          <use xlink:href="#icon-youjiantou"></use>
         </svg>
       </div>
     </div>
@@ -133,8 +133,8 @@
   }
 
   .products .icon {
-    vertical-align: middle;
     display: inline-block;
+    font-size: 0.4rem;
   }
 
   .products_product {

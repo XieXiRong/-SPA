@@ -6,6 +6,8 @@ import App from './App'
 import router from './router'
 import './mock/mock'
 import store from './store'
+import { Button } from 'mint-ui';
+Vue.component('mt-button', Button);
 Vue.component('mt-swipe', Swipe);
 Vue.component('mt-swipe-item', SwipeItem);
 

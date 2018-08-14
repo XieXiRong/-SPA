@@ -3,7 +3,7 @@
     <Header v-if="$route.path==='/msite'"/>
     <ShiwuHeader v-if="$route.path==='/shiwu'||$route.path==='/personal'"/>
     <router-view/>
-    <FootGuide/>
+    <FootGuide v-if="$route.path!=='/personal'"/>
   </div>
 </template>
 
@@ -25,10 +25,10 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../static/css/mixins.styl"
-  #app
-    width 100%
-    height 100%
-    background-color: #eee
-
+  body
+    background-color: #F2F5F4
+   #app
+     width 100%
+     height 100%
 
 </style>
