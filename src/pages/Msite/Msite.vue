@@ -75,6 +75,7 @@
     <NewProduct :scrollclass2="'new_scroll_msite'" :newcates="cateList.popularItemList"/>
     <SettimeSell/>
   </div>
+    <Cover/>
   </div>
 </template>
 
@@ -84,11 +85,18 @@
   import NewProduct from '../../components/newProduct/newProduct'
   import SettimeSell from './SettimeSell/SettimeSell'
   import {mapState} from 'vuex'
+  import Cover from './Cover/Cover'
   export default {
+    data(){
+      return{
+        showcover:true
+      }
+    },
     components:{
       Swipe,
       NewProduct,
-      SettimeSell
+      SettimeSell,
+      Cover
     },
     computed:{
       ...mapState(['cateList'])
@@ -133,6 +141,7 @@
   }
 
   .products .icon {
+
     display: inline-block;
     font-size: 0.4rem;
   }

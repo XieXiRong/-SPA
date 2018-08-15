@@ -49,7 +49,6 @@
 
 <style>
   .foot_container{
-    z-index: 999;
     width:100%;
     position: fixed;
     bottom: 0;

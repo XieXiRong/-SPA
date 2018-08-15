@@ -2,7 +2,10 @@
   <div id="app">
     <Header v-if="$route.path==='/msite'"/>
     <ShiwuHeader v-if="$route.path==='/shiwu'||$route.path==='/personal'"/>
-    <router-view/>
+    <keep-alive>
+      <router-view v-if="$route.path==='/msite'"/>
+    </keep-alive>
+    <router-view v-if="$route.path!=='/msite'"/>
     <FootGuide v-if="$route.path!=='/personal'"/>
   </div>
 </template>

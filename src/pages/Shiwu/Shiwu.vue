@@ -1,19 +1,24 @@
 <template>
   <div class="shiwu_wrap">
-    <div class="shiwu_wrap2">
-      <div class="swiper_top">
-        <mt-swipe class="swip_show" :show-indicators="false">
-          <mt-swipe-item v-for="(item,index) in shiwu.banner" :key="index">
-            <div class="swipt">
-              <div class="swiptimg">
-                <img :src="item.picUrl" alt="">
-              </div>
-            </div>
-          </mt-swipe-item>
+        <!--<mt-swipe class="swip_show" :show-indicators="false">-->
+          <!--<mt-swipe-item v-for="(item,index) in shiwu.banner" :key="index">-->
+            <!--<div class="swipt">-->
+              <!--<div class="swiptimg">-->
+                <!--<img :src="item.picUrl" alt="">-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</mt-swipe-item>-->
 
-        </mt-swipe>
+        <!--</mt-swipe>-->
+    <div class="swiper-container5">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div v-for="(item,index) in shiwu.banner" :key="index" class="swiper-slide"><img :src="item.picUrl" alt=""></div>
+        </div>
       </div>
     </div>
+
+
     <div class="shiwu_wrap2">
       <div class="new_scroll_msite">
         <div class="new_products_msite">
@@ -155,6 +160,7 @@
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
 
+
   export default {
     methods: {
       _shiwuScroll() {
@@ -188,21 +194,19 @@
     },
     mounted() {
       this.$store.dispatch('getShiwuDatas')
-
-      new Swiper('.swiper-container', {
-        direction: 'horizontal',
-        spaceBetween: 0,
-        loop: true,
-        slidesPerView: 1,
-        centeredSlides: true
-      });
-
     },
     watch:{
       shiwu(val){
         this.$nextTick(()=>{
           this._shiwuScroll()
           this._talkScroll()
+          new Swiper('.swiper-container', {
+            direction: 'horizontal',
+            spaceBetween: 10,
+            loop: true,
+            slidesPerView: 1.15,
+            centeredSlides: true
+          });
         })
       }
     },
@@ -212,13 +216,22 @@
 
 <style lang="less" scoped>
   .shiwu_wrap{
-    clear: both;
     margin-bottom: 5rem;
   }
-
-  .shiwu_wrap2 {
-    /*overflow: hidden;*/
-
+  .swiper-container5{
+    display: flex;
+    background-color: white;
+  }
+  .swiper-slide{
+    clear: both;
+    width: 100vw;
+    height: 300px;
+  }
+  .swiper-slide img{
+    display: inline-block;
+    width: 85vw;
+    height: 280px;
+    border-radius: 0.1rem;
   }
  .swiper_top{
    width: 100%;
@@ -241,7 +254,8 @@
  }
   .swiptimg img{
     width: 100%;
-    height: 100%;
+    height: 90%;
+    margin: auto 0;
     border-radius: 0.2rem;
   }
   .new_scroll_msite {

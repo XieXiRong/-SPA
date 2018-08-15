@@ -1,6 +1,7 @@
 export default {
   cateList:[],
   shiwu:{},
-  categoryList:[]
+  categoryList:[],
+  showcover:true,
 }
 
